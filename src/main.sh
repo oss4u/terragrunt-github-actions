@@ -178,13 +178,25 @@ function main {
       installTerragrunt
       terragruntValidate ${*}
       ;;
+    validate-all)
+      installTerragrunt
+      terragruntPlan ${tfSubcommand} ${*}
+      ;;
     plan)
       installTerragrunt
-      terragruntPlan ${*}
+      terragruntPlan ${tfSubcommand}
+      ;;
+    plan-all)
+      installTerragrunt
+      terragruntPlan ${tfSubcommand} ${*}
       ;;
     apply)
       installTerragrunt
-      terragruntApply ${*}
+      terragruntApply ${tfSubcommand}
+      ;;
+    apply-all)
+      installTerragrunt
+      terragruntApply ${tfSubcommand} ${*}
       ;;
     output)
       installTerragrunt
