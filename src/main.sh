@@ -167,51 +167,51 @@ function main {
 
   case "${tfSubcommand}" in
     fmt)
-      installTerragrunt
+      # installTerragrunt
       terragruntFmt ${*}
       ;;
     init)
-      installTerragrunt
+      # installTerragrunt
       terragruntInit ${*}
       ;;
     validate)
-      installTerragrunt
+      # installTerragrunt
       terragruntValidate ${*}
       ;;
     validate-all)
-      installTerragrunt
+      # installTerragrunt
       terragruntValidate ${*}
       ;;
     plan)
-      installTerragrunt
+      # installTerragrunt
       terragruntPlan ${tfSubcommand} ${*}
       ;;
     plan-all)
-      installTerragrunt
+      # installTerragrunt
       terragruntPlan ${tfSubcommand} ${*}
       ;;
     apply)
-      installTerragrunt
+      # installTerragrunt
       terragruntApply ${tfSubcommand} ${*}
       ;;
     apply-all)
-      installTerragrunt
+      # installTerragrunt
       terragruntApply ${tfSubcommand} ${*}
       ;;
     output)
-      installTerragrunt
+      # installTerragrunt
       terragruntOutput ${*}
       ;;
     import)
-      installTerragrunt
+      # installTerragrunt
       terragruntImport ${*}
       ;;
     taint)
-      installTerragrunt
+      # installTerragrunt
       terragruntTaint ${*}
       ;;
     destroy)
-      installTerragrunt
+      # installTerragrunt
       terragruntDestroy ${*}
       ;;
     *)
