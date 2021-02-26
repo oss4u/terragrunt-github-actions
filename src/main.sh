@@ -176,7 +176,7 @@ function main {
       ;;
     validate)
       installTerragrunt
-      terragruntValidate ${*}
+      terragruntValidate ${tfSubcommand} ${*}
       ;;
     validate-all)
       installTerragrunt
@@ -184,7 +184,7 @@ function main {
       ;;
     plan)
       installTerragrunt
-      terragruntPlan ${tfSubcommand}
+      terragruntPlan ${tfSubcommand} ${*}
       ;;
     plan-all)
       installTerragrunt
@@ -192,7 +192,7 @@ function main {
       ;;
     apply)
       installTerragrunt
-      terragruntApply ${tfSubcommand}
+      terragruntApply ${tfSubcommand} ${*}
       ;;
     apply-all)
       installTerragrunt
