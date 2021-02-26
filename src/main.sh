@@ -176,11 +176,11 @@ function main {
       ;;
     validate)
       installTerragrunt
-      terragruntValidate ${tfSubcommand} ${*}
+      terragruntValidate ${*}
       ;;
     validate-all)
       installTerragrunt
-      terragruntValidate ${tfSubcommand} ${*}
+      terragruntValidate ${*}
       ;;
     plan)
       installTerragrunt
