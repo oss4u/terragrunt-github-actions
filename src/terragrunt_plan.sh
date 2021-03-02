@@ -3,7 +3,7 @@
 function terragruntPlan {
   # Gather the output of `terragrunt plan`.
   echo "plan: info: planning Terragrunt configuration in ${tfWorkingDir}"
-  planOutput=$(./run plan ${tfWorkingDir} 2>&1)
+  planOutput=$(bash run plan ${tfWorkingDir} 2>&1)
   planExitCode=${?}
   planHasChanges=false
   planCommentStatus="Failed"
