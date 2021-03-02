@@ -174,6 +174,10 @@ function main {
       # installTerragrunt
       terragruntInit ${*}
       ;;
+    init-all)
+      # installTerragrunt
+      terragruntInit ${*}
+      ;;
     validate)
       # installTerragrunt
       terragruntValidate ${*}
