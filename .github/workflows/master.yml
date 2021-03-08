@@ -32,9 +32,9 @@ jobs:
         uses: redhat-actions/buildah-build@v2.2.1
         with:
           # The name (reference) of the image to build
-          image: 
+          image: ghcr.io/oss4u/terragrunt-github-actions
           # The tags of the image to build. For multiple tags, seperate by a space. For example, "latest v1".
-          #tags: # optional, default is latest
+          tags: latest v1.0 # optional, default is latest
           # The base image to use to create a new container image
           #base-image: # optional
           # List of Dockerfile paths (eg: ./Dockerfile)
