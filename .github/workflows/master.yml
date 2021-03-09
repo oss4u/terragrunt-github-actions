@@ -41,5 +41,5 @@ jobs:
           image:    ${{ steps.build-image.outputs.image }}
           tags:     ${{ steps.build-image.outputs.tags }}
           registry: ghcr.io
-          username: me@e-beyond.de
+          username: eBeyond
           password: ${{ secrets.GHCR_TOKEN }}
