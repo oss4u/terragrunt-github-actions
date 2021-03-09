@@ -2,15 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Build and push image
+    runs-on: ubuntu-20.04
+    env:
+      IMAGE_NAME: ghcr.io/oss4u/terragrunt-github-actions
+      IMAGE_TAGS: latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,7 +20,7 @@ jobs:
         id: build-image
         uses: redhat-actions/buildah-build@v2.2.1
         with:
-          image:       ghcr.io/oss4u/terragrunt-github-actions
+          image:       ${{ env.IMAGE_NAME }}
           tags:        latest 
           dockerfiles: ./Dockerfile
     
@@ -27,8 +28,8 @@ jobs:
         id: push-to-ghcr
         uses: redhat-actions/push-to-registry@v2
         with:
-          image:       ghcr.io/oss4u/terragrunt-github-actions
-          tags:        latest 
-          registry: ghcr.io
-          username: ${{ secrets.GHCR_USER }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          image:       ${{ steps.build-image.outputs.image }}
+          tags:        ${{ steps.build-image.outputs.tags }}
+          registry:    ghcr.io
+          username:    ${{ secrets.GHCR_USER }}
+          password:    ${{ secrets.GHCR_TOKEN }}
