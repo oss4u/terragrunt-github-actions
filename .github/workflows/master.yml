@@ -10,7 +10,8 @@ jobs:
     name: Build and push image
     runs-on: ubuntu-20.04
     env:
-      IMAGE_NAME: ghcr.io/oss4u/terragrunt-github-actions
+      REGISTRY:   ghcr.io
+      IMAGE_NAME: oss4u/terragrunt-github-actions
       IMAGE_TAGS: latest
     steps:
       - name: Checkout
@@ -21,7 +22,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2.2.1
         with:
           image:       ${{ env.IMAGE_NAME }}
-          tags:        latest 
+          tags:        ${{ env.IMAGE_TAGS }}
           dockerfiles: ./Dockerfile
     
       - name: Push To GitHub Container Registry
@@ -30,6 +31,6 @@ jobs:
         with:
           image:       ${{ steps.build-image.outputs.image }}
           tags:        ${{ steps.build-image.outputs.tags }}
-          registry:    ghcr.io
+          registry:    ${{ env.REGISTRY }}
           username:    ${{ secrets.GHCR_USER }}
           password:    ${{ secrets.GHCR_TOKEN }}
