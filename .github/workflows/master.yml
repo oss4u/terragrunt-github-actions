@@ -30,5 +30,5 @@ jobs:
           image:       ghcr.io/oss4u/terragrunt-github-actions
           tags:        latest 
           registry: ghcr.io
-          username: oss4u
+          username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_TOKEN }}
