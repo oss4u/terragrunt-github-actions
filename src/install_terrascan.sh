@@ -15,7 +15,7 @@ function installTerrascan {
   url="https://github.com/accurics/terrascan/releases/download/v${tsVersion}/terrascan_${tsVersion}_Linux_x86_64.tar.gz"
 
   echo "Downloading TerraScan v${tsVersion}"
-  curl -s -S -L -o /tmp/terrascan_${tsVersion} ${url}
+  curl -s -S -L -o /tmp/terrascan_${tsVersion}.zip ${url}
   if [ "${?}" -ne 0 ]; then
     echo "Failed to download TerraScan v${tsVersion}"
     exit 1
@@ -23,7 +23,8 @@ function installTerrascan {
   echo "Successfully downloaded TerraScan v${tsVersion}"
 
   echo "Unzipping TerraScan v${tfVersion}"
-  unzip -d /usr/local/bin /tmp/terrascan_${tsVersion} &> /dev/null
+  ls -l /tmp/terra*
+  unzip -d /usr/local/bin /tmp/terrascan_${tsVersion}.zip &> /dev/null
   if [ "${?}" -ne 0 ]; then
     echo "Failed to unzip TerraScan v${tsVersion}"
     exit 1
