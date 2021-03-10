@@ -1,6 +1,7 @@
 #!/bin/bash
 scriptDir=$(dirname ${0})
 
+mkdir -p ~/.ssh
 echo "Host *" > ~/.ssh/config
 echo "	StrictHostKeyChecking no" >> ~/.ssh/config
 
