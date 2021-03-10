@@ -152,9 +152,10 @@ function main {
   scriptDir=$(dirname ${0})
   source ${scriptDir}/terragrunt_fmt.sh
   source ${scriptDir}/terragrunt_init.sh
-  source ${scriptDir}/terragrunt_validate.sh
-  source ${scriptDir}/terragrunt_plan.sh
-  source ${scriptDir}/terragrunt_apply.sh
+  source ${scriptDir}/terragrunt_run-all_init.sh
+  source ${scriptDir}/terragrunt_run-all_validate.sh
+  source ${scriptDir}/terragrunt_run-all_plan.sh
+  source ${scriptDir}/terragrunt_run-all_apply.sh
   source ${scriptDir}/terragrunt_output.sh
   source ${scriptDir}/terragrunt_import.sh
   source ${scriptDir}/terragrunt_taint.sh
@@ -176,7 +177,7 @@ function main {
       ;;
     init-all)
       # installTerragrunt
-      terragruntInit ${*}
+      terragruntRunAllInit ${*}
       ;;
     validate)
       # installTerragrunt
@@ -184,7 +185,7 @@ function main {
       ;;
     validate-all)
       # installTerragrunt
-      terragruntValidate ${*}
+      terragruntRunAllValidate ${*}
       ;;
     plan)
       # installTerragrunt
@@ -192,7 +193,7 @@ function main {
       ;;
     plan-all)
       # installTerragrunt
-      terragruntPlan ${tfSubcommand} ${*}
+      terragruntRunAllPlan ${tfSubcommand} ${*}
       ;;
     apply)
       # installTerragrunt
@@ -200,7 +201,7 @@ function main {
       ;;
     apply-all)
       # installTerragrunt
-      terragruntApply ${tfSubcommand} ${*}
+      terragruntRunAllApply ${tfSubcommand} ${*}
       ;;
     output)
       # installTerragrunt
