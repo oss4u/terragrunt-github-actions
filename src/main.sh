@@ -85,67 +85,10 @@ EOF
   fi
 }
 
-function installTerraform {
-  if [[ "${tfVersion}" == "latest" ]]; then
-    echo "Checking the latest version of Terraform"
-    tfVersion=$(curl -sL https://releases.hashicorp.com/terraform/index.json | jq -r '.versions[].version' | grep -v '[-].*' | sort -rV | head -n 1)
+source ${scriptDir}/install_terragrunt.sh
+source ${scriptDir}/install_terraform.sh
+source ${scriptDir}/install_terrascan.sh
 
-    if [[ -z "${tfVersion}" ]]; then
-      echo "Failed to fetch the latest version"
-      exit 1
-    fi
-  fi
-
-  url="https://releases.hashicorp.com/terraform/${tfVersion}/terraform_${tfVersion}_linux_amd64.zip"
-
-  echo "Downloading Terraform v${tfVersion}"
-  curl -s -S -L -o /tmp/terraform_${tfVersion} ${url}
-  if [ "${?}" -ne 0 ]; then
-    echo "Failed to download Terraform v${tfVersion}"
-    exit 1
-  fi
-  echo "Successfully downloaded Terraform v${tfVersion}"
-
-  echo "Unzipping Terraform v${tfVersion}"
-  unzip -d /usr/local/bin /tmp/terraform_${tfVersion} &> /dev/null
-  if [ "${?}" -ne 0 ]; then
-    echo "Failed to unzip Terraform v${tfVersion}"
-    exit 1
-  fi
-  echo "Successfully unzipped Terraform v${tfVersion}"
-}
-
-function installTerragrunt {
-  if [[ "${tgVersion}" == "latest" ]]; then
-    echo "Checking the latest version of Terragrunt"
-    latestURL=$(curl -Ls -o /dev/null -w %{url_effective} https://github.com/gruntwork-io/terragrunt/releases/latest)
-    tgVersion=${latestURL##*/}
-
-    if [[ -z "${tgVersion}" ]]; then
-      echo "Failed to fetch the latest version"
-      exit 1
-    fi
-  fi
-
-  url="https://github.com/gruntwork-io/terragrunt/releases/download/${tgVersion}/terragrunt_linux_amd64"
-
-  echo "Downloading Terragrunt ${tgVersion}"
-  curl -s -S -L -o /tmp/terragrunt ${url}
-  if [ "${?}" -ne 0 ]; then
-    echo "Failed to download Terragrunt ${tgVersion}"
-    exit 1
-  fi
-  echo "Successfully downloaded Terragrunt ${tgVersion}"
-
-  echo "Moving Terragrunt ${tgVersion} to PATH"
-  chmod +x /tmp/terragrunt
-  mv /tmp/terragrunt /usr/local/bin/terragrunt 
-  if [ "${?}" -ne 0 ]; then
-    echo "Failed to move Terragrunt ${tgVersion}"
-    exit 1
-  fi
-  echo "Successfully moved Terragrunt ${tgVersion}"
-}
 
 function main {
   # Source the other files to gain access to their functions
@@ -164,6 +107,8 @@ function main {
   parseInputs
   configureCLICredentials
   installTerraform
+  installTerragrunt
+  installTerrascan
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in
