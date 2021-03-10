@@ -19,6 +19,10 @@ inputs:
     description: 'Terragrunt version to install.'
     required: true
     default: 'latest'
+  ts_actions_version:
+    description: 'TerraScan version to install.'
+    required: true
+    default: 'latest'
   tf_actions_cli_credentials_hostname:
     description: 'Hostname for the CLI credentials file.'
     default: 'app.terraform.io'

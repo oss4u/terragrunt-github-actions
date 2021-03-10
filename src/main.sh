@@ -36,6 +36,13 @@ function parseInputs {
     exit 1
   fi
 
+  if [ "${INPUT_TS_ACTIONS_VERSION}" != "" ]; then
+    tsVersion=${INPUT_TS_ACTIONS_VERSION}
+  else
+    echo "Input terrascan_version cannot be empty"
+    exit 1
+  fi
+
   if [ "${INPUT_TF_ACTIONS_SUBCOMMAND}" != "" ]; then
     tfSubcommand=${INPUT_TF_ACTIONS_SUBCOMMAND}
   else
