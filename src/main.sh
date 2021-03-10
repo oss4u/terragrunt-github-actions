@@ -1,6 +1,9 @@
 #!/bin/bash
 scriptDir=$(dirname ${0})
 
+echo "Host *" > ~/.ssh/config
+echo "	StrictHostKeyChecking no" >> ~/.ssh/config
+
 function stripColors {
   echo "${1}" | sed 's/\x1b\[[0-9;]*m//g'
 }
