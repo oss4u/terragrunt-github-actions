@@ -4,6 +4,7 @@ scriptDir=$(dirname ${0})
 mkdir -p ~/.ssh
 echo "Host *" > ~/.ssh/config
 echo "	StrictHostKeyChecking no" >> ~/.ssh/config
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 function stripColors {
   echo "${1}" | sed 's/\x1b\[[0-9;]*m//g'
