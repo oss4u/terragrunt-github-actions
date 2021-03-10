@@ -5,6 +5,7 @@ function installTerrascan {
     echo "Checking the latest version of TerraScan"
     latestURL=$(curl -Ls -o /dev/null -w %{url_effective} https://github.com/accurics/terrascan/releases/latest)
     tsVersion=${latestURL##*/}
+    tsVersion=echo "${tsVersion}" | sed s/^v//
 
     if [[ -z "${tsVersion}" ]]; then
       echo "Failed to fetch the latest version"
