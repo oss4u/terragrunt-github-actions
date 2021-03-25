@@ -1,4 +1,6 @@
 # Terragrunt GitHub Actions
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Foss4u%2Fterragrunt-github-actions.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Foss4u%2Fterragrunt-github-actions?ref=badge_shield)
+
 
 Terragrunt GitHub Actions allow you to execute Terragrunt commands within GitHub Actions.
 
@@ -127,3 +129,6 @@ The usual [Terraform environment variables](https://www.terraform.io/docs/comman
 Other environment variables may be configured to pass data into Terraform. If the data is sensitive, consider using [secrets](#secrets) instead.
 
 **This is a fork of [Terraform Github Actions](https://github.com/hashicorp/terraform-github-actions).**
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Foss4u%2Fterragrunt-github-actions.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Foss4u%2Fterragrunt-github-actions?ref=badge_large)
