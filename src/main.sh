@@ -116,6 +116,7 @@ function main {
   source ${scriptDir}/terragrunt_import.sh
   source ${scriptDir}/terragrunt_taint.sh
   source ${scriptDir}/terragrunt_destroy.sh
+  source ${scriptDir}/terragrunt_validate.sh
 
   parseInputs
   configureCLICredentials
