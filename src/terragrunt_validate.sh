@@ -3,9 +3,19 @@
 function terragruntValidate {
   # Gather the output of `terragrunt validate`.
   initOutput=$(${tfBinary} init -backend=false ${tfWorkingDir} 2>&1)
+  initExitCode=${?}
+  echo "validate: info: initializing without backend in  ${tfWorkingDir}"
   echo "validate: info: validating Terragrunt configuration in ${tfWorkingDir}"
   validateOutput=$(${tfBinary} validate ${tfWorkingDir} 2>&1)
   validateExitCode=${?}
+
+  # Exit code of 0 indicates success. Print the output and exit.
+  # if [ ${initExitCode} -eq 0 ]; then
+  #   echo "validate: info: successfully validated Terragrunt configuration in ${tfWorkingDir}"
+  #   echo "${initOutput}"
+  #   echo
+  #   exit ${initExitCode}
+  # fi
 
   # Exit code of 0 indicates success. Print the output and exit.
   if [ ${validateExitCode} -eq 0 ]; then
