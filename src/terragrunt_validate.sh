@@ -2,6 +2,7 @@
 
 function terragruntValidate {
   # Gather the output of `terragrunt validate`.
+  initOutput=$(${tfBinary} init -backend=false ${tfWorkingDir} 2>&1)
   echo "validate: info: validating Terragrunt configuration in ${tfWorkingDir}"
   validateOutput=$(${tfBinary} validate ${tfWorkingDir} 2>&1)
   validateExitCode=${?}
